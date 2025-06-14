@@ -45,13 +45,11 @@ class Twitter_API:
                 params ={
                             'count' : 100,      # 取得するtweet数
                             'exclude': 'retweets',   #RTを除外
-                            #'include_rts' :False ,
                             'result_type': 'recent',    #時系列で取得
                             'max_id': tweet_id,
                             'q'     : keyword
                             }
                 req = self.twitter.get(url, params = params)
-#               data_count=0
                 if req.status_code == 200:
                     res = json.loads(req.text)
                     for tweet in res['statuses']:
@@ -80,7 +78,7 @@ class Twitter_API:
                                                       index=self.pos_pd.columns).T  # .Tで行と列を入れ替える
                                 self.pos_pd = self.pos_pd.append(addRow,
                                                                  ignore_index=True)
-                                # ignore_index=True パラメータを指定することで、新たな行番号を割り当てることができます。
+                            # ignore_index=True パラメータを指定することで、新たな行番号を割り当てることができます。
                             elif twitter_result == "Neg":
                                 pos_tweet = False
                                 neg_tweet = True
@@ -94,7 +92,7 @@ class Twitter_API:
                                                       index=self.pos_pd.columns).T  # .Tで行と列を入れ替える
                                 self.neg_pd = self.neg_pd.append(addRow,
                                                                  ignore_index=True)
-                                # ignore_index=True パラメータを指定することで、新たな行番号を割り当てることができます。
+                            # ignore_index=True パラメータを指定することで、新たな行番号を割り当てることができます。
                             elif twitter_result=="None":
                                 continue
 
