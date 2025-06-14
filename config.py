@@ -1,4 +1,3 @@
-#セキュリティの問題上非表示にしています
 CONSUMER_KEY = "********************" #API key
 CONSUMER_SECRET = "********************" #API secret key
 ACCESS_TOKEN = "********************" #Access token
