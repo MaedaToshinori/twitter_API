@@ -10,7 +10,6 @@ class Word_data:
         word_class = []
         while node:
             word = node.surface #wordにnodeの単語を入力
-            #print(word)
             wclass = node.feature.split(',')
             ##node.featureは品詞,品詞細分類1,品詞細分類2,品詞細分類3,活用形,活用型,原形,読み,発音の順になっているのでsplitで配列化
             if wclass[0] != u'BOS/EOS': #BOS は beginning of sentenceで文頭、EOS は end of sentence で文末、ということ。
