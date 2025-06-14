@@ -1,8 +1,4 @@
-#import csv
 import MeCab
-#import pandas as pd
-#import xlwings
-#import win32
 import pandas as pd
 
 
@@ -11,8 +7,6 @@ class Word_data:
         tagger = MeCab.Tagger("-Ochasen")   #ChaSenという形態素解析器と互換の出力をする設定にしている
         tagger.parse('')
         node = tagger.parseToNode(text) #nodeにsurface(単語)feature(品詞情報)を持つ解析結果を代入
-        #print("node=")
-        #print(node)
         word_class = []
         while node:
             word = node.surface #wordにnodeの単語を入力
@@ -36,13 +30,8 @@ class Word_data:
             posneg = self.Emotion.loc[i, 'seikika'] in me_text
             if posneg == True and self.Emotion.loc[i, 'pos_neg'] == 'pos':
                     pos += 1
-                    #print(self.Emotion.loc[i, 'seikika'])
             elif posneg == True and self.Emotion.loc[i, 'pos_neg'] == 'neg':
                     neg += 1
-                    #print(self.Emotion.loc[i, 'seikika'])
-                # print(self.Emotion.loc[i, 'seikika'])
-        #print(pos)
-        #print(neg)
 
         if pos != 0 and neg != 0:
             pos = 0
@@ -61,11 +50,9 @@ class Word_data:
 
     def csv_read(self):
         emotion_dic=pd.read_csv("D18-2018_2.csv")
-        #print(emotion_dic)
         list=[]
         for i, row in emotion_dic.iterrows():
             emotion_dic.loc[i,'seikika']=self.mecab_list(emotion_dic.at[i,'Word'])
-        #print(emotion_dic['Word'][0])
         print("list="+str(list))
 
         return emotion_dic
