@@ -61,9 +61,7 @@ class Twitter_API:
                             #print(tweet['user']['screen_name'])
                             print(tweet['text'])
                             mecab_test=self.word_natural.mecab_list(tweet['text'])
-                            #print(mecab_test)
                             twitter_result=self.word_natural.word_datacheck(mecab_test)
-                            #print(twitter_result)
 
                             if twitter_result=="Pos":
                                 pos_tweet=True
